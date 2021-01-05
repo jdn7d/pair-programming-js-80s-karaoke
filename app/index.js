@@ -12,6 +12,8 @@ const lyricsDisplay = document.querySelector('#lyrics-display')
 const pauseButton = document.querySelector('#song-controls-container').children[0]
 const cancelButton = document.querySelector('#song-controls-container').children[1]
 
+// handle switching between displays //
+
 const switchToSongsList = () => {
   songsList.style.display = "block"
   lyricsDisplay.style.display = "none"
@@ -21,6 +23,8 @@ const switchToLyricsDisplay = () => {
   songsList.style.display = "none"
   lyricsDisplay.style.display = "block"
 }
+
+// handle clearing / pausing / resuming the song //
 
 const clearSong = () => {
   currentLyrics = null
@@ -45,6 +49,8 @@ const pauseOrResumeSong = () => {
   lyricsInterval && currentLyrics ? pauseSong() : resumeSong()
 }
 
+// handle what happens each interval while the song is playing //
+
 const nextLyrics = () => {
   currentLine++
   lyricsDisplay.children[0].innerText = currentLyrics[currentLine]
@@ -57,14 +63,18 @@ const startLyricsInterval = intervalTime => {
   lyricsInterval = setInterval(nextLyrics, intervalTime)
 }
 
+// handle beginning the song //
+
 const startSong = song => {
   switchToLyricsDisplay()
   currentLine = 0
   currentLyrics = song.lyrics.split("/")
   lyricsDisplay.children[0].innerText = currentLyrics[currentLine]
-  timePerLyric = song.playtime / currentLyrics.length * 100
+  timePerLyric = song.playtime / currentLyrics.length * 500
   startLyricsInterval(timePerLyric)
 }
+
+// handle loading the songs list //
 
 const renderSongsList = songs => {
   songs.forEach(song => {
@@ -83,6 +93,8 @@ const getSongs = () => {
     renderSongsList(data)
   })
 }
+
+// add initial event listeners and initial songs fetch //
 
 cancelButton.addEventListener("click", clearSong)
 pauseButton.addEventListener("click", pauseOrResumeSong)
