@@ -38,7 +38,7 @@ The `#cancel-song` button stops the song from playing (essential clearing any in
 
 ## BONUS: Pause Song
 
-The `#pause-song` button is tricky so tackle this one last as a bonus. Add functionality to this button that, while a song is playing, will pause the lyrics and keep them from continuing. You may need to change some of your original functionality. Using globally scoped variables can be benificial here (for example `currentLyric` can help keep track of where you left off). The button's text gets replaced by `Resume`.
+The `#pause-song` button is tricky so tackle this one last as a bonus. Add functionality to this button that, while a song is playing, will pause the lyrics and keep them from continuing. You may need to change some of your original functionality. Using globally scoped variables can be benificial here (for example `currentLyric` can help keep track of where you left off). The button's text gets replaced by `Resume`. 
 
 When clicked again, the lyrics start playing on the screen again from where they left off. The button changes its text back to `Pause`.
 
